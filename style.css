@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background: #9e9860;
+  /* light blue background requested */
+  background: #cfeeff;
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -8,10 +9,11 @@ body {
 
 .container {
   width: 400px;
-  background: #93822d;
+  /* adjust container for good contrast on light blue background */
+  background: #ffffff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
 
 h1 {

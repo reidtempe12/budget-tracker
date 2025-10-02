@@ -4,7 +4,8 @@ const descEl = document.getElementById("desc");
 const amountEl = document.getElementById("amount");
 const addBtn = document.getElementById("add");
 
-let balance = 0;
+// Initialize balance from the DOM (if present) or default to 0
+let balance = Number(balanceEl.textContent) || 0;
 
 addBtn.addEventListener("click", () => {
   const desc = descEl.value.trim();
