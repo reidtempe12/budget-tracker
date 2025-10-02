@@ -9,16 +9,19 @@ body {
 
 .container {
   width: 400px;
-  /* adjust container for good contrast on light blue background */
-  background: #ffffff;
+  /* semi-transparent container with backdrop blur for a modern look */
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 h1 {
   text-align: center;
-  color: #333;
+  color: #0b2a3a; /* darker teal/blue for accessibility */
 }
 
 .balance {
@@ -35,18 +38,19 @@ h1 {
 input, button {
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #bfc9cc;
+  color: #08303a;
 }
 
 button {
-  background: #59c580;
-  color: white;
+  background: #0077b6; /* accessible blue */
+  color: #ffffff;
   cursor: pointer;
   border: none;
 }
 
 button:hover {
-  background: #837b97;
+  background: #005f87;
 }
 
 ul {
@@ -55,10 +59,16 @@ ul {
 }
 
 li {
-  background: #5e59a6;
-  margin: 5px 0;
-  padding: 8px;
-  border-radius: 6px;
+  background: rgba(11,42,58,0.06); /* subtle neutral background */
+  color: #072026; /* dark text for readability */
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+li span {
+  font-weight: 600;
 }
