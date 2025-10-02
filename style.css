@@ -72,3 +72,45 @@ li {
 li span {
   font-weight: 600;
 }
+
+/* Responsive styles for very small screens */
+@media (max-width: 420px) {
+  body {
+    padding: 12px;
+  }
+
+  .container {
+    width: 95%;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .balance h2 {
+    font-size: 1rem;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  input, button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  ul {
+    margin-top: 8px;
+  }
+
+  li {
+    padding: 8px;
+    font-size: 0.95rem;
+  }
+}
