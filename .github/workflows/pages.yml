@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -25,14 +25,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Optional: install dependencies if package.json exists
+      - name: Install dependencies
+        if: exists('package.json')
+        run: npm install
+
+      # Optional: build site if build script exists
+      - name: Build site
+        if: contains(steps.install.outputs.cache-hit, 'false') || exists('package.json')
+        run: |
+          if npm run | grep -q "build"; then
+            npm run build
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 👇 UPDATED STEP — replaces deprecated upload-artifact@v3
+      # Upload artifact dynamically depending on build folder
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .  # change this to 'dist' or 'build' if you have a build output folder
+          path: |
+            ./dist
+            ./build
+            ./  # fallback to root if no build folder
 
       - name: Deploy to GitHub Pages
         id: deployment
