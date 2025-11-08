@@ -22,19 +22,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Configure GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # 3️⃣ Upload artifact from root folder
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./  # root folder since your site is static
 
+      # 4️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
 
