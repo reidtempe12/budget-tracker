@@ -3,7 +3,7 @@ name: Deploy static site to GitHub Pages
 on:
   push:
     branches:
-      - main  # or 'master' if your repo uses that
+      - main
 
 permissions:
   contents: read
@@ -25,30 +25,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Optional: install dependencies if package.json exists
-      - name: Install dependencies
-        if: exists('package.json')
-        run: npm install
-
-      # Optional: build site if build script exists
-      - name: Build site
-        if: contains(steps.install.outputs.cache-hit, 'false') || exists('package.json')
-        run: |
-          if npm run | grep -q "build"; then
-            npm run build
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Upload artifact dynamically depending on build folder
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            ./dist
-            ./build
-            ./  # fallback to root if no build folder
+          path: ./  # root folder since your site is static
 
       - name: Deploy to GitHub Pages
         id: deployment
